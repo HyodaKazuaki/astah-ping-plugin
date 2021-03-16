@@ -11,12 +11,20 @@
                path="tool/ping">
          </menu>
          <action
-			   label="%menu_label"
-               icon="icons/sample.gif"
-               class="jp.ex_t.kazuaki.change_vision.TemplateAction"
-               tooltip="%menu_tooltip"
-               menubarPath="tool/ping/"
-               id="ping">
+                 label="%menu_label_client"
+                 icon="icons/sample.gif"
+                 class="jp.ex_t.kazuaki.change_vision.TemplateAction"
+                 tooltip="%menu_tooltip"
+                 menubarPath="tool/ping/"
+                 id="ping">
+         </action>
+         <action
+                 label="%menu_label_server"
+                 icon="icons/sample.gif"
+                 class="jp.ex_t.kazuaki.change_vision.ServerAction"
+                 tooltip="%menu_tooltip"
+                 menubarPath="tool/ping/"
+                 id="ping">
          </action>
      </actionSet>
    </extension>
