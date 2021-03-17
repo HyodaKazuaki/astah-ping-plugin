@@ -30,10 +30,10 @@ class SocketServer(private val portNumber: Int) {
             while (true) {
                 while (inputStream.available() == 0) {}
                 val receivedMessage = bufferedReader.readLine()
-                if (receivedMessage.first() == '\n') {
+                if (receivedMessage == "") {
                     break
                 }
-                println("Received: ${receivedMessage}")
+                println("Received: $receivedMessage")
                 printWriter.write(receivedMessage)
                 printWriter.flush()
             }
