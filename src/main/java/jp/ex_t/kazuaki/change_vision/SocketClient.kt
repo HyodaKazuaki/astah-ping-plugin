@@ -24,8 +24,7 @@ class SocketClient(private val ipAddress: String, private val portNumber: Int) {
     }
 
     fun read(): String {
-        while (inputStream.available() == 0) {
-        }
+        while (inputStream.available() == 0) {}
         return bufferedReader.readLine()
     }
 

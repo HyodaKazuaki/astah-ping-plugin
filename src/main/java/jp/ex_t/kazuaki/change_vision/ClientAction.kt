@@ -29,7 +29,6 @@ class ClientAction: IPluginActionDelegate {
                 val receivedMessage = socketClient.read()
                 println("Received: $receivedMessage")
             }
-
         } catch (e: IPAddressFormatException) {
             JOptionPane.showMessageDialog(window.parent, "IP address must be IPv4 address.", "Warning", JOptionPane.WARNING_MESSAGE)
         } catch (e: NumberFormatException) {

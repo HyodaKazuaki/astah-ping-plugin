@@ -20,7 +20,6 @@ class ServerAction: IPluginActionDelegate {
                 socketServer.stop()
             }
             isLaunchedServer = !isLaunchedServer
-
         } catch (e: NumberFormatException) {
             JOptionPane.showMessageDialog(window.parent, "Port number must be an integer and be 0 - 65535.", "Warning", JOptionPane.WARNING_MESSAGE)
         } catch (e: Exception) {
