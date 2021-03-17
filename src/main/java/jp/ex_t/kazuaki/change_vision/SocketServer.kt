@@ -12,7 +12,7 @@ class SocketServer(private val portNumber: Int) {
         serverSocket.reuseAddress = true
         serverSocket.bind(InetSocketAddress(portNumber))
         isLaunched = true
-        println("Launched server.")
+        println("Launched server. localhost:$portNumber")
     }
 
     fun stop() {
