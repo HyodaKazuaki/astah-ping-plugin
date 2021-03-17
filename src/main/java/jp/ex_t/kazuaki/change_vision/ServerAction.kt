@@ -11,6 +11,8 @@ import javax.swing.JOptionPane
 class ServerAction: IPluginActionDelegate {
     private var isLaunchedServer = false
     private lateinit var socketServer: SocketServer
+
+    @Throws(Exception::class)
     override fun run(window: IWindow) {
         try {
             if (!isLaunchedServer) {
