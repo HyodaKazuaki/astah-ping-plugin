@@ -27,7 +27,7 @@ class ClientAction: IPluginActionDelegate {
                     break
                 }
                 val receivedMessage = socketClient.read()
-                println("Received: ${receivedMessage}")
+                println("Received: $receivedMessage")
             }
 
         } catch (e: IPAddressFormatException) {
