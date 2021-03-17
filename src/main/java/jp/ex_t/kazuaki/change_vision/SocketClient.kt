@@ -19,7 +19,7 @@ class SocketClient(private val ipAddress: String, private val portNumber: Int) {
     }
 
     fun write(message: String) {
-        printWriter.write(message)
+        printWriter.println(message)
         printWriter.flush()
     }
 
