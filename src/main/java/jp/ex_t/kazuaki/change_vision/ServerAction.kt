@@ -16,7 +16,7 @@ class ServerAction: IPluginActionDelegate {
     override fun run(window: IWindow) {
         try {
             if (!isLaunchedServer) {
-                val portNumber = JOptionPane.showInputDialog(window.parent, "Input server port.").toInt()
+                val portNumber = (JOptionPane.showInputDialog(window.parent, "Input server port.") ?: return).toInt()
                 if ((0 > portNumber) or (65535 < portNumber)) throw NumberFormatException()
                 socketServer = SocketServer(portNumber)
                 socketServer.launch()

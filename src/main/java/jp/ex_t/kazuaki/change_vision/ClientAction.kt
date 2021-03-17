@@ -8,10 +8,10 @@ class ClientAction: IPluginActionDelegate {
     @Throws(Exception::class)
     override fun run(window: IWindow) {
         try {
-            val ipAddress = JOptionPane.showInputDialog(window.parent, "Input IP address or \"localhost\"")
+            val ipAddress = JOptionPane.showInputDialog(window.parent, "Input IP address or \"localhost\"") ?: return
             val ipAddressPattern = Regex("""^((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])\.){3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])${'$'}""")
-            if (!ipAddressPattern.matches(ipAddress)) throw IPAddressFormatException()
-            val portNumber = JOptionPane.showInputDialog(window.parent, "Input server port.").toInt()
+            if (!ipAddressPattern.matches(ipAddress) && ipAddress != "localhost") throw IPAddressFormatException()
+            val portNumber = (JOptionPane.showInputDialog(window.parent, "Input server port.") ?: return).toInt()
             if ((0 > portNumber) or (65535 < portNumber)) throw NumberFormatException()
 
             val socketClient = SocketClient(ipAddress, portNumber)
@@ -19,7 +19,7 @@ class ClientAction: IPluginActionDelegate {
             println("Connection established.")
 
             while (true) {
-                val message = JOptionPane.showInputDialog("Input message what you send server. Empty closes connection.")
+                val message = JOptionPane.showInputDialog(window.parent, "Input message what you send server. Empty closes connection.") ?: ""
                 socketClient.write(message)
                 if (message == "") {
                     socketClient.close()
