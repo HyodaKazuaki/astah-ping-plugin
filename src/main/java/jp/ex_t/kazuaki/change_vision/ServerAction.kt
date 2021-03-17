@@ -2,10 +2,6 @@ package jp.ex_t.kazuaki.change_vision
 
 import com.change_vision.jude.api.inf.ui.IPluginActionDelegate
 import com.change_vision.jude.api.inf.ui.IWindow
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import javax.swing.JOptionPane
 
 class ServerAction: IPluginActionDelegate {
@@ -20,13 +16,6 @@ class ServerAction: IPluginActionDelegate {
                 if ((0 > portNumber) or (65535 < portNumber)) throw NumberFormatException()
                 socketServer = SocketServer(portNumber)
                 socketServer.launch()
-                GlobalScope.launch {
-                    kotlin.runCatching {
-                        withContext(Dispatchers.IO) {
-                            socketServer.serve()
-                        }
-                    }
-                }
             } else {
                 socketServer.stop()
             }
